@@ -1,3 +1,28 @@
+/*###### Custom Scrollbar ######*/
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(245, 158, 158); 
+  border-radius: 20px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(360deg, rgba(236, 122, 122, 0.55) 0%, rgba(236, 122, 183, 0.55) 100%);
+
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(360deg, rgb(236, 122, 122) 0%, rgb(236, 122, 183) 100%);
+}
+/*###### End Custom Scrollbar ######*/
+
 @font-face {
   font-family: 'option';
   src: url('./assets/font/option.ttf') format('truetype');
@@ -58,13 +83,21 @@
   margin: 40px 0;
   width: 100%;
 }
-.myButton{
+.myButtonMenu{
   clear: white;
   background: linear-gradient(180deg, #EC7A7A 0%, #EC7AB7 100%);
   padding: 8px 38px;
   border: 0;
   border-radius: 10px  ;
   margin-right: 60px;
+}
+.myButton{
+  clear: white;
+  background: linear-gradient(180deg, #EC7A7A 0%, #EC7AB7 100%);
+  padding: 8px 38px;
+  border: 0;
+  border-radius: 10px;
+  margin-top: 8px;
 }
 .containBtnRegister{
   text-align: center;
@@ -102,6 +135,7 @@
 .modalContent{
   text-align: center;
   position: relative;
+  margin-top: 60px;
 }
 .btnModalClose{
   position: absolute;
@@ -116,13 +150,239 @@
   border: 0;
 }
 .formModal{
-  padding:30px 30px 70px 30px;
+  padding:30px;
 }
 .formModal > input{
   margin-bottom: 15px;
 }
 .formModal > button{
+  text-align: center;
+}
+.formRegister{
+  height: 60vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.indexPage{
+  background: url('./assets/images/cat-walpaper.jpg') fixed;
+  background-size: cover;
+  height: 100vh;
+}
+.col-3{
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+.profil{
+  height: 100vh;
+  background-color: white;
+}
+.profilNav{
+  background: linear-gradient(270deg, #EC7AB7 0%, #EC7A7A 54.71%), linear-gradient(90deg, #FFC75A 0%, #EC7A7A 50%), #EC7A7A;
+  padding: 6px;
+  position:absolute;
+  width: 100%;
+  z-index:2;
+}
+.myImage{
+  width: 50px;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+.profilNav > span{
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 12px;
+  margin-right: 4px;
+}
+.col-4{
+  padding-right: 0 !important;
+  padding-left: 0px !important;
+}
+.listMatch{
+  padding-right: 2px;
+  margin-left: 2px;
+  height: 90vh;
+  position:absolute;
+  top:62px;
+  bottom:0;
+  left:0;
+  right:0;
+  overflow: hidden;
+  z-index:1;
+  overflow-y: auto;
+}
+.listMatch > p {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 6px 7px 1px 7px;
+  border-bottom: 3px solid  #EC7A7A;
+  width: 60px;
+  margin-left: 10px;
+  margin-bottom: 8px;
+}
+.imgMatchContain{
+  position: relative;
+  overflow: hidden;
+  border: 3px solid white;
+  border-radius: 10px;
+}
+.imgMatch{
+  width: 200px;
+  left: -10px;
+}
+
+.nameMacth{
+ position: absolute;
+ bottom: -16px;
+ color: white;
+ width: 100vh;
+ font-size: 12px;
+ padding: 6px;
+ background:  linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,0,0,0) 100%, rgba(255,255,255,1) 100%);
+}
+.imgCard{
+  height: 520px;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: -100px;
+}
+.imgCardContain{
+  width: 360px;
+  height: 520px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 6px;
+  box-shadow: 3px 4px 7px rgba(0, 0, 0, 0.8);
+}
+.cardSugestContain{
+  width: 100%;
+  display: flex;
+  margin-top: 30px;
+}
+.imgButton{
+  width: 50px;
+  border-radius: 50%;
+  padding: 13px;
+  background: radial-gradient(circle, rgba(236,122,146,1) 30%, rgba(255,255,255,0) 75%);
+}
+.btnCardSugest{
+  border-radius: 50%;
+  border:0;
+  margin: 9px 9px 0px 10px;
+  background: rgba(0, 0, 0, 0);
+}
+.imgButtonBig{
+  width: 70px;
+  border-radius: 50%;
+  padding: 15px;
+  background: radial-gradient(circle, rgba(236,122,146,1) 35%, rgba(255,255,255,0) 80%);
+}
+.detailCard{
+  position: absolute;
+  color: white;
+  bottom: 0px;
+  left: 0px;
+  padding-left: 16px;
+  padding-bottom: 8px;
+  background:  linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,0,0,0) 100%, rgba(255,255,255,1) 100%);
+}
+.nameBreeder{
+  margin: 0px;
+  font-size: 30px;
+  font-weight: bold;
+}
+.detailBreeder{
+  margin: 0px;
+  padding: 0px;
+  font-size: 14px;
+}
+.detailBreeder > img {
+  width: 19px;
+}
+
+.arrowCard > button{
+  border: none;
+  outline:none;
+  position: absolute;
+  font-size: 100px;
+  padding: 0;
+  padding: 0 70px 30px 60px;
+  right: -70px;
+  top: 25%;
+  background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 74%);
+}
+.cardIndicatorLeft{
+  position: absolute;
+  top: 4px;
+  height: 4px;
+  margin-left: 5px;
+  width: 48%;
+  border-radius: 4px;
+  background: rgba(168, 168, 168, 0.5);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.cardIndicatorRight{
+  position: absolute;
+  top: 4px;
+  right: 0px;
+  height: 4px;
+  margin-right: 5px;
+  width: 48%;
+  border-radius: 4px;
+  background: rgba(168, 168, 168, 0.5);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.indicatorActive{
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.navSugest{
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 80%);
+  position: absolute;
+  bottom: 0;
+  padding:35px 0 6px 0;
+}
+.navSugest > button{
+  background: transparent;
+  border: none;
+  outline:none;
+}
+.navSugest > button > img {
+  background: rgba(0, 0, 0, 0.6);
+  width: 27px;
+  padding: 2px;
+  border-radius: 6px;
+  margin-bottom: 3px;
+}
+.navSugest > button >span{
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  margin-left: 5px;
+  margin-right: 18px;
+  color: white;
+}
+.navSugest > input {
+  border-radius: 12px;
+  border: 2px solid rgb(172, 172, 172);
+  display: inline-block;
+  width: 130px;
+  height: 25px;
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  font-weight: 400;
+  padding-left: 8px;
+}
+.navSugest > input:focus {
+  border-radius: 12px;
+  outline: none !important;
+  border: 2px solid #719ECE;
+  box-shadow: 0 0 10px #719ECE;
+}
+.col-9{
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 }

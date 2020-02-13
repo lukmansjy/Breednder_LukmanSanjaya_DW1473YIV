@@ -32,6 +32,10 @@ class Home extends Component{
         })
     }
 
+    handleBtnLogin = ()=>{
+        window.location.href = 'http://localhost:3000/index'
+    }
+
     render(){
         return(
             <div className="homeContain">
@@ -41,7 +45,7 @@ class Home extends Component{
                             <img src={require('../../src/assets/icons/cats-couple-love.png')} alt="BreedNder Logo" />
                             <span>BreedNder</span>
                         </div>
-                        <button className="myButton" onClick={this.handleShowLogin}>Login</button>
+                        <button className="myButtonMenu" onClick={this.handleShowLogin}>Login</button>
                     </div>
                     <div className="msg">
                         <div>
@@ -75,13 +79,13 @@ class Home extends Component{
                     </div>
                 </Modal>
 
-                {/* MODAL Redister */}
+                {/* MODAL Register */}
                 <Modal show={this.state.modalRegister} onHide={this.handleHideRegister} className="modalContent">
                     <div>
                         <span className="modalTitle">Register</span>
                         <button className="btnModalClose" onClick={this.handleHideRegister}>X</button>
                     </div>
-                    <div className="formModal">
+                    <div className="formModal formRegister">
                         <Form.Control type="text" placeholder="Breeder" />
                         <Form.Control type="email" placeholder="Email" />
                         <Form.Control type="password" placeholder="Password" />
