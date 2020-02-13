@@ -25,7 +25,7 @@ class Home extends Component{
                         </div>
                     </div>
                 </div>
-                
+
                 <div className="homeFotter">
                     <p>FIND YOUR PET'S MATCH</p>
                 </div>
