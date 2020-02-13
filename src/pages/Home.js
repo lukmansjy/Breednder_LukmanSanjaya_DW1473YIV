@@ -21,6 +21,17 @@ class Home extends Component{
         })
     }
 
+    handleShowRegister = ()=>{
+        this.setState({
+            modalRegister: true
+        })
+    }
+    handleHideRegister = ()=>{
+        this.setState({
+            modalRegister: false
+        })
+    }
+
     render(){
         return(
             <div className="homeContain">
@@ -41,7 +52,7 @@ class Home extends Component{
                             <p className="term">by clicking enter, you agree to <u>our terms</u>. Learn how we process your data in our <u>Privacy Policy</u> and <u>Cookie Policy</u>.</p>
                         </div>
                         <div className="containBtnRegister">
-                            <button className="btnRegister" >Register</button>
+                            <button className="myButton" onClick={this.handleShowRegister}>Register</button>
                         </div>
                     </div>
                 </div>
@@ -60,7 +71,33 @@ class Home extends Component{
                     <div className="formModal">
                         <Form.Control type="email" placeholder="Email" />
                         <Form.Control type="password" placeholder="Password" />
-                        <button onClick={this.handleBtnLogin} className="btnRegister">Login</button>
+                        <button onClick={this.handleBtnLogin} className="myButton">Login</button>
+                    </div>
+                </Modal>
+
+                {/* MODAL Redister */}
+                <Modal show={this.state.modalRegister} onHide={this.handleHideRegister} className="modalContent">
+                    <div>
+                        <span className="modalTitle">Register</span>
+                        <button className="btnModalClose" onClick={this.handleHideRegister}>X</button>
+                    </div>
+                    <div className="formModal">
+                        <Form.Control type="text" placeholder="Breeder" />
+                        <Form.Control type="email" placeholder="Email" />
+                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="number" placeholder="Phone Breeder" />
+                        <Form.Control type="text" placeholder="Adrees Breeder" />
+                        <Form.Control type="text" placeholder="Name Pet" />
+                        <Form.Control type="text" placeholder="Gender Pet" />
+                        <Form.Control as="select" style={{marginBottom: 15}}>
+                            <option>Spesies Pet</option>
+                            <option>Spesies Pet 1</option>
+                            <option>Spesies Pet 2</option>
+                            <option>Spesies Pet 3</option>
+                            <option>Spesies Pet 4</option>
+                        </Form.Control>  
+                        <Form.Control type="text" placeholder="Age" />
+                        <button className="myButton">Register</button>
                     </div>
                 </Modal>
                 

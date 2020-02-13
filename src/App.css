@@ -69,7 +69,7 @@
 .containBtnRegister{
   text-align: center;
 }
-.btnRegister{
+.btnSumitModal{
   clear: white;
   background: linear-gradient(180deg, #EC7A7A 0%, #EC7AB7 100%);
   padding: 10px 80px;
