@@ -1,38 +1,94 @@
-.App {
+@font-face {
+  font-family: 'option';
+  src: url('./assets/font/option.ttf') format('truetype');
+}
+.homeContain{
+  background: url('../src//assets/images/home-img.jpg') fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homeGradient{
+  position: relative;
+  background: linear-gradient(180deg, rgba(236, 122, 122, 0.14) 0%, rgba(236, 122, 183, 0.13) 100%), linear-gradient(180deg, rgba(236, 122, 122, 0.237) 0%, rgba(0, 0, 0, 0) 100%, rgba(236, 122, 183, 0) 100%);
+  height: 100%;
+  width: 100%;
+}
+.slogan {
+  color: white;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
+  font-size: 60px;
+  font-weight: bold;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.msg{
+  position: absolute;
+  width: 100%;
+  top: 24%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.term{
   color: white;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
+  font-size: 24px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-
-.App-link {
-  color: #61dafb;
+.homeFotter{
+  background: #EC7A93;
+  padding: 15px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.homeFotter > p {
+  color: white;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  margin: 0;
+  text-align: center;
+}
+.nav{
+  position: absolute;
+  top: 0px;
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0;
+  width: 100%;
+}
+.myButton{
+  clear: white;
+  background: linear-gradient(180deg, #EC7A7A 0%, #EC7AB7 100%);
+  padding: 8px 38px;
+  border: 0;
+  border-radius: 10px  ;
+  margin-right: 60px;
+}
+.containBtnRegister{
+  text-align: center;
+}
+.btnRegister{
+  clear: white;
+  background: linear-gradient(180deg, #EC7A7A 0%, #EC7AB7 100%);
+  padding: 10px 80px;
+  border: 0;
+  border-radius: 50px  ;
+  margin-right: 60px;
+}
+.brand{
+  margin-left: 60px;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+.brand > span {
+  font-family: 'option';
+  color: white;
+  font-size: 30px;
+}
+.brand > img {
+  height: 37px;
+  position: absolute;
+  top: -30px;
+  left: 150px;
 }
