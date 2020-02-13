@@ -92,3 +92,37 @@
   top: -30px;
   left: 150px;
 }
+.modalTitle{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 10px;
+  display: inline-block;
+}
+.modalContent{
+  text-align: center;
+  position: relative;
+}
+.btnModalClose{
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: 0;
+}
+.formModal{
+  padding:30px 30px 70px 30px;
+}
+.formModal > input{
+  margin-bottom: 15px;
+}
+.formModal > button{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
