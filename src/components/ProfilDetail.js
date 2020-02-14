@@ -2,10 +2,8 @@ import React, {Component, Fragment} from 'react'
 import { Link } from 'react-router-dom'
 
 class ProfilDetail extends Component{
-    handleClick = ()=>{
-        window.location.href = 'http://localhost:3000/profil'
-    }
     render(){
+        console.log(this.props.addpet)
         return(
             <Fragment>
                 <div className="profilNav">
@@ -13,7 +11,7 @@ class ProfilDetail extends Component{
                         <img src={require('../assets/icons/arrow-left-icon.png')} alt="nav bottom"/>
                     </Link>
                     <img src={require('../../src/assets/icons/cats-couple-love.png')} className="myImage" alt="Logo"/>
-                    <span>Profile Pat</span>
+                    <span>{this.props.addpet? 'Add Pet': 'Profile Pat'}</span>
                 </div>
                 <div className="profilDetail">
                     <div className="scrollsideLeft">

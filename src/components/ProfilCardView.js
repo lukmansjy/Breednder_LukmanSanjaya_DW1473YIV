@@ -4,7 +4,8 @@ import {Modal} from 'react-bootstrap'
 const ProfilCardView = (props)=>{
     const [state, setState] = useState({
         modalShowPayment: false,
-        modalShowConfrim: false
+        modalShowConfrim: false,
+        addPet: false
     })
 
     const handleModalShowPayment = ()=>{
@@ -22,9 +23,11 @@ const ProfilCardView = (props)=>{
 
     const handleModalShowConfrim = ()=>{
         setState({
+            ...state,
             modalShowPayment: false,
             modalShowConfrim: true
         })
+        setTimeout(()=>window.location.href = 'http://localhost:3000/add-pet', 3000);
     }
     const handleModaConfrimClose = ()=>{
         setState({

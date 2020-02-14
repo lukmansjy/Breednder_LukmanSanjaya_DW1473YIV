@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import Profil from './pages/Profil'
+import AddPet from './pages/AddPet'
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route path="/profil">
           <Profil/>
+        </Route>
+        <Route path="/add-pet">
+          <AddPet/>
         </Route>
         <Route path="/">
           <Home/>

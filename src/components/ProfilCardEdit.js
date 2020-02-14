@@ -26,7 +26,7 @@ const ProfilCardEdit = (props)=>{
                 
             </div>
             <div className="contentEditProfil">
-                <h5>Edit</h5>
+                <h5>Details</h5>
                 <h6>Name Pet</h6>
                 <input className="inputText" type="text"/>
                 <h6>Name Pet</h6>
