@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Modal, Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 class Home extends Component{
     constructor(){
@@ -75,7 +76,10 @@ class Home extends Component{
                     <div className="formModal">
                         <Form.Control type="email" placeholder="Email" />
                         <Form.Control type="password" placeholder="Password" />
-                        <button onClick={this.handleBtnLogin} className="myButton">Login</button>
+                        <Link to="/index">
+                            <button className="myButton">Login</button>
+                        </Link>
+                        
                     </div>
                 </Modal>
 

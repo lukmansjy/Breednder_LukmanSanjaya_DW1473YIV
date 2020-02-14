@@ -1,18 +1,18 @@
 import React, {Component} from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
-import ListImage from '../components/ListImage'
-import CardSugest from '../components/CardSugest'
+import ProfilDetail from '../components/ProfilDetail'
+import ProfilCard from '../components/ProfilCard'
 
-class IndexPage extends Component{
+class Profil extends Component {
     render(){
         return(
             <Container fluid={true} className="indexPage">
                 <Row>
                     <Col xs={3} className="sideLeft">
-                        <ListImage/>
+                        <ProfilDetail/>
                     </Col>
                     <Col xs={9} className="sideRight">
-                        <CardSugest />
+                        <ProfilCard />
                     </Col>
                 </Row>
             </Container>
@@ -20,4 +20,4 @@ class IndexPage extends Component{
     }
 }
 
-export default IndexPage
+export default Profil

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CardSugestImage = (props)=>{
+const CardSugestImage = ()=>{
     return(
-        <div className="cardSugestContain">
+        <div className="cardFrontImg">
             <div className="imgCardContain">
                 <img className="imgCard" src={require('../assets/images/home-img.jpg')} alt="Pet"/>
                 <div className="cardIndicatorLeft indicatorActive"></div>

@@ -3,6 +3,7 @@ import IndexPage from './pages/IndexPage';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
+import Profil from './pages/Profil'
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
       <Switch>
         <Route path="/index">
           <IndexPage/>
+        </Route>
+        <Route path="/profil">
+          <Profil/>
         </Route>
         <Route path="/">
           <Home/>
