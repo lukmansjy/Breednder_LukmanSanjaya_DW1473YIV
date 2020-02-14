@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 
 class ProfilDetail extends Component{
     render(){
-        console.log(this.props.addpet)
         return(
             <Fragment>
                 <div className="profilNav">
-                    <Link to="/index">
+                    <Link to={this.props.addpet? '/profil': '/index'}>
                         <img src={require('../assets/icons/arrow-left-icon.png')} alt="nav bottom"/>
                     </Link>
                     <img src={require('../../src/assets/icons/cats-couple-love.png')} className="myImage" alt="Logo"/>

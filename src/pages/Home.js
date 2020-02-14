@@ -33,10 +33,6 @@ class Home extends Component{
         })
     }
 
-    handleBtnLogin = ()=>{
-        window.location.href = 'http://localhost:3000/index'
-    }
-
     render(){
         return(
             <div className="homeContain">
@@ -98,10 +94,11 @@ class Home extends Component{
                         <Form.Control type="text" placeholder="Gender Pet" />
                         <Form.Control as="select" style={{marginBottom: 15}}>
                             <option>Spesies Pet</option>
-                            <option>Spesies Pet 1</option>
-                            <option>Spesies Pet 2</option>
-                            <option>Spesies Pet 3</option>
-                            <option>Spesies Pet 4</option>
+                            <option value="Cat">Cat</option>
+                            <option value="Dog">Dog</option>
+                            <option value="Rabbit">Rabbit</option>
+                            <option value="Bird">Bird</option>
+                            <option value="Sugar Glider">Sugar Glider</option>
                         </Form.Control>  
                         <Form.Control type="text" placeholder="Age" />
                         <button className="myButton">Register</button>

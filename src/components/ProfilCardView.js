@@ -1,11 +1,13 @@
 import React, { Fragment, useState } from 'react'
-import {Modal} from 'react-bootstrap'
+import {Modal, Carousel} from 'react-bootstrap'
+import {Redirect} from 'react-router-dom'
 
 const ProfilCardView = (props)=>{
     const [state, setState] = useState({
         modalShowPayment: false,
         modalShowConfrim: false,
-        addPet: false
+        addPet: false,
+        payConfrm: false
     })
 
     const handleModalShowPayment = ()=>{
@@ -27,7 +29,12 @@ const ProfilCardView = (props)=>{
             modalShowPayment: false,
             modalShowConfrim: true
         })
-        setTimeout(()=>window.location.href = 'http://localhost:3000/add-pet', 3000);
+        setTimeout(()=>{
+            setState({
+                ...state,
+                payConfrm: true
+            })
+        }, 3000);
     }
     const handleModaConfrimClose = ()=>{
         setState({
@@ -36,13 +43,55 @@ const ProfilCardView = (props)=>{
         })
     }
 
+    //Swipe
+    const [index, setIndex] = useState(0);
+    const [direction, setDirection] = useState(null);
+
+    const handleSelect = (selectedIndex, e) => {
+        setIndex(selectedIndex);
+        setDirection(e.direction);
+    };
+
     return(
         <Fragment>
+            {state.payConfrm? <Redirect to="/add-pet" />: ''}
             <div className="cardFrontImg">
                 <div className="profilImgCard">
-                    <img src={require('../assets/images/home-img.jpg')} alt="Pet"/>
+                
+                {/* SWIPE */}
+                <Carousel activeIndex={index} direction={direction} onSelect={handleSelect}>
+                    <Carousel.Item>
+                        <img
+                        className="d-block swipeImg"
+                        src="http://localhost:3000/images/cat-1.jpg"
+                        alt="First slide"/>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                        className="d-block swipeImg"
+                        src="http://localhost:3000/images/cat-2.jpg"
+                        alt="Second slide"
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                        className="d-block swipeImg"
+                        src="http://localhost:3000/images/cat-3.jpg"
+                        alt="Third slide"
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                        className="d-block swipeImg"
+                        src="http://localhost:3000/images/cat-2.jpg"
+                        alt="Second slide"
+                        />
+                    </Carousel.Item>
+                </Carousel>
+
+                    {/* <img src={require('../assets/images/home-img.jpg')} alt="Pet"/>
                     <div className="cardIndicatorLeft indicatorActive"></div>
-                    <div className="cardIndicatorRight"></div>
+                    <div className="cardIndicatorRight"></div> */}
                 </div>
                 
             </div>

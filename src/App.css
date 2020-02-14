@@ -268,8 +268,10 @@
   border-radius: 10px;
 }
 .imgMatch{
-  width: 200px;
-  left: -10px;
+  /* position: absolute; */
+  /* width: 200px; */
+  height: 140px;
+  /* left: -10px; */
 }
 
 .nameMacth{
@@ -277,7 +279,7 @@
  bottom: -16px;
  color: white;
  width: 100vh;
- font-size: 12px;
+ font-size: 13px;
  padding: 6px;
  background:  linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,0,0,0) 100%, rgba(255,255,255,1) 100%);
 }
@@ -318,6 +320,7 @@
   background: radial-gradient(circle, rgba(236,122,146,1) 35%, rgba(255,255,255,0) 80%);
 }
 .detailCard{
+  width: 100%;
   position: absolute;
   color: white;
   bottom: 0px;
@@ -622,23 +625,60 @@ button {
   display: none;
 }
 .imageUpload > label {
-  background: rgba(255, 255, 255, 0.6);
-  padding: 10px ;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 16px ;
   margin: 20px 20px 16px 24px;
   border-radius: 8px;
   cursor: pointer;
 }
 .imageUpload > label > img {
   width: 120px;
-} 
+}
+.imageUpload > label:hover{
+  background: rgba(255, 255, 255, 0.8);;
+}
 .btnPremium{
   color: #EC7A7A;
   border-radius: 12px;
   border: 0;
-  padding: 6px 60px;
+  padding: 6px 90px;
   margin-top: 12px;
+  margin-left: 2px;
 }
 .modalKomfrimPay{
   margin-top: 15%;
   text-align: center;
+}
+button:hover{
+  background: rgba(113, 158, 206, 0.3);
+  color: black;
+}
+.displayNone{
+  display: none;
+}
+.splashScreen{
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(0deg, #EC7A7A 0%, #EC7AB7 100%);
+  text-align: center;
+  color: white;
+}
+.splashScreen > img{
+  width: 150px;
+  margin-top: 22vh;
+  margin-bottom: 30px;
+}
+.rotate {
+  animation: rotation 2s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.swipeImg{
+  height: 440px;
 }

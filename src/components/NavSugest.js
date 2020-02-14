@@ -1,10 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import BottonNavSugest from '../molecules/BottonNavSugest'
 
 const NavSugest = ()=>{
+    const [state, setState]= useState({
+        showNav: true
+    })
+
+    const hideNav = ()=>{
+        setState({
+            showNav: false
+        })
+    }
+
     return(
-        <div className="navSugest">
-            <BottonNavSugest img={require('../assets/icons/double-arrow-down-icon.png')} name="Hide" alt="Hide"/>
+        <div className={state.showNav? 'navSugest': 'navSugest displayNone'}>
+            <BottonNavSugest action={hideNav} img={require('../assets/icons/double-arrow-down-icon.png')} name="Hide" alt="Hide"/>
             <BottonNavSugest img={require('../assets/icons/arrow-left-icon.png')} name="No" alt="No"/>
             <BottonNavSugest img={require('../assets/icons/arrow-right-icon.png')} name="Yes" alt="Yes"/>
             <BottonNavSugest img={require('../assets/icons/arrow-up-icon.png')} name="Open Profile" alt="Open Profile"/>

@@ -4,8 +4,8 @@ class ImageCardMatch extends Component{
     render(){
         return(
             <Fragment>
-                <img src={require('../assets/images/home-img.jpg')} className="imgMatch" alt="Pet"/>
-                <p className="nameMacth">Meong Meong</p>
+                <img src={this.props.data.photo} className="imgMatch" alt="Pet"/>
+                <p className="nameMacth">{this.props.data.name}</p>
             </Fragment>
         )
     }
