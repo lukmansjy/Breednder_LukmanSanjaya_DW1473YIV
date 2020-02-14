@@ -543,6 +543,9 @@ button {
   margin-top: 8px;
 }
 .mb-12{
+  margin-bottom: 12px;
+}
+.mb-20{
   margin-bottom: 20px;
 }
 .imgAddImage{
@@ -570,4 +573,17 @@ button {
 }
 .rotate45{
   transform: rotate(45deg);
+}
+.contentEditProfil > textarea {
+  width: 94%;
+  margin: 10px;
+  border-radius: 14px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.contentEditProfil > textarea:focus {
+  border-radius: 14px;
+  outline: none !important;
+  border: 2px solid #719ECE;
+  box-shadow: 0 0 10px #719ECE;
 }
