@@ -1,6 +1,38 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
+import {Modal} from 'react-bootstrap'
 
 const ProfilCardView = (props)=>{
+    const [state, setState] = useState({
+        modalShowPayment: false,
+        modalShowConfrim: false
+    })
+
+    const handleModalShowPayment = ()=>{
+        setState({
+            ...state,
+            modalShowPayment: true
+        })
+    }
+    const handleModaPaymentlClose = ()=>{
+        setState({
+            ...state,
+            modalShowPayment: false
+        })
+    }
+
+    const handleModalShowConfrim = ()=>{
+        setState({
+            modalShowPayment: false,
+            modalShowConfrim: true
+        })
+    }
+    const handleModaConfrimClose = ()=>{
+        setState({
+            ...state,
+            modalShowConfrim: false
+        })
+    }
+
     return(
         <Fragment>
             <div className="cardFrontImg">
@@ -22,8 +54,34 @@ const ProfilCardView = (props)=>{
                 </div>
             </div>
             <div className="absoluteUpRight">
-                <button className="myBtnMini">Add Pet</button>
+                <button className="myBtnMini" onClick={handleModalShowPayment}>Add Pet</button>
             </div>
+
+            {/* MODAL PREMIUM PAYMENT*/}
+            <Modal show={state.modalShowPayment} onHide={handleModaPaymentlClose} className="containerModalPremium">
+                <div className="modalPremium">
+                    <div>
+                        <h3>Premium</h3>
+                        <button className="btnModalClose" onClick={handleModaPaymentlClose}>X</button>
+                    </div>
+                    <p>Upgrade Breednder mu dan nikmati fitur-fitur <b>PRO</b>.</p>
+                    <p><b>Breednder: 303030303030</b></p>
+                    <input className="inputTextPremium" type="text" placeholder="No Rek. Kamu"/>
+                    <div className="imageUpload">
+                        <label htmlFor="file-input">
+                            <img src={require('../assets/icons/camera-icon.png')} alt="Upload Bukti"/>
+                        </label>
+                        <input id="file-input" type="file"/>
+                    </div>
+                    <button className="btnPremium" onClick={handleModalShowConfrim}>Kirim</button>
+                </div>
+            </Modal>
+
+            {/* MODAL PREMIUM CONFRIM*/}
+            <Modal show={state.modalShowConfrim} onHide={handleModaConfrimClose} className="modalKomfrimPay">
+                <h3>Konfirmasi Terkirim</h3>
+                <p>Terimakasih Silakan Tunggu Konfirmasi pembayaran</p>
+            </Modal>
         </Fragment>
     )
 }

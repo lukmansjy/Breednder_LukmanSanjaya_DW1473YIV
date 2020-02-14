@@ -587,3 +587,58 @@ button {
   border: 2px solid #719ECE;
   box-shadow: 0 0 10px #719ECE;
 }
+.modalPremium{
+  background: linear-gradient(0deg, #EC7A7A 0%, #EC7AB7 100%);
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  padding:10px 20px 30px 20px;
+}
+.containerModalPremium > div > div{
+  background: transparent !important;
+  border: 0;
+}
+.inputTextPremium {
+  border-radius: 12px;
+  border: 2px solid rgb(172, 172, 172);
+  display: inline-block;
+  width: 50%;
+  height: 30px;
+  background: rgba(0, 0, 0, 0);
+  font-weight: 400;
+  padding-left: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+  margin-top: 8px;
+  
+}
+.inputTextPremium:focus {
+  border-radius: 12px;
+  outline: none !important;
+  border: 2px solid #719ECE;
+  box-shadow: 0 0 10px #719ECE;
+}
+.imageUpload > input {
+  display: none;
+}
+.imageUpload > label {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 10px ;
+  margin: 20px 20px 16px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.imageUpload > label > img {
+  width: 120px;
+} 
+.btnPremium{
+  color: #EC7A7A;
+  border-radius: 12px;
+  border: 0;
+  padding: 6px 60px;
+  margin-top: 12px;
+}
+.modalKomfrimPay{
+  margin-top: 15%;
+  text-align: center;
+}
