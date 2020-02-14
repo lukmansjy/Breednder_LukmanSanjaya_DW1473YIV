@@ -79,7 +79,6 @@ class Home extends Component{
                         <Link to="/index">
                             <button className="myButton">Login</button>
                         </Link>
-                        
                     </div>
                 </Modal>
 

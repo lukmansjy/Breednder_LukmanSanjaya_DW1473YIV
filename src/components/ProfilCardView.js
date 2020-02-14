@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-const ProfilCardView = ()=>{
+const ProfilCardView = (props)=>{
     return(
         <Fragment>
             <div className="cardFrontImg">
@@ -18,7 +18,7 @@ const ProfilCardView = ()=>{
                 <p className="detailBreeder"><img src={require('../assets/icons/gender-icon.png')} alt="Gender Icon"/> Male - Adult</p>
                 <p className="detailBreeder"><img src={require('../assets/icons/phone-icon.png')} alt="Phone Icon"/> 082226455525</p>
                 <div className="contentMyBtnMini">
-                    <button className="myBtnMini">Edit</button>
+                    <button className="myBtnMini" onClick={props.hendleEdit}>Edit</button>
                 </div>
             </div>
             <div className="absoluteUpRight">

@@ -32,7 +32,7 @@ class ProfilDetail extends Component{
                             <span className="right">1 mm</span>
                         </div>
                         <div className="labelDetailprofil">
-                            <div class="mySliderRangeContainer">
+                            <div className="mySliderRangeContainer">
                                 <input type="range" className="mySliderRange" />
                             </div>
                         </div>
