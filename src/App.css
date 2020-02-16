@@ -102,18 +102,19 @@
   margin-bottom: 30px;
 }
 .homeFotter{
-  background: #EC7A93;
-  padding: 15px;
+  background: linear-gradient(180deg, rgba(236,122,147,0.005) 0%, rgba(236,122,147,1) 100%);
+  padding: 50px 0 15px 0;
   position: absolute;
   bottom: 0px;
   width: 100%;
 }
 .homeFotter > p {
   color: white;
-  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
   font-size: 20px;
   margin: 0;
   text-align: center;
+  font-weight: 400;
 }
 .nav{
   position: absolute;
@@ -268,10 +269,7 @@
   border-radius: 10px;
 }
 .imgMatch{
-  /* position: absolute; */
-  /* width: 200px; */
   height: 140px;
-  /* left: -10px; */
 }
 
 .nameMacth{
@@ -320,14 +318,14 @@
   background: radial-gradient(circle, rgba(236,122,146,1) 35%, rgba(255,255,255,0) 80%);
 }
 .detailCard{
-  width: 100%;
-  position: absolute;
   color: white;
   bottom: 0px;
   left: 0px;
+  padding-top: 58px;
   padding-left: 16px;
-  padding-bottom: 8px;
-  background:  linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,0,0,0) 100%, rgba(255,255,255,1) 100%);
+  padding-bottom: 0px;
+  background: linear-gradient(180deg, rgba(236,122,147,0) 0%, rgba(236,122,147,1) 70%);
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 .nameBreeder{
   margin: 0px;
@@ -681,4 +679,103 @@ button:hover{
 }
 .swipeImg{
   height: 440px;
+}
+.sideRight{
+  background: rgba(255, 255, 255, 0.3);
+}
+.bgDanger{
+  background: rgb(252, 42, 42);
+}
+/* * {
+  box-sizing: border-box;
+} */
+/* html, body */
+.containerCardSwipe{
+  overscroll-behavior-y: contain;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  user-select: none;
+  font-family: Raleway, sans-serif;
+  position: fixed;
+  overflow: hidden;
+}
+
+/* #root > div */
+.containerCardSwipe > div {
+  position: absolute;
+  width: 67vw;
+  height: 86vh;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerCardSwipe > div > div {
+  padding: 5px;
+  background-color: white;
+  background-size: auto 85%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 300px;
+  max-width: 300px;
+  height: 550px;
+  max-height: 570px;
+  will-change: transform;
+  border-radius: 10px;
+  box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4),
+    0 10px 10px -10px rgba(50, 50, 73, 0.3);
+  overflow: hidden !important;
+  border-bottom: 8px solid white;
+}
+
+/* img */
+.imageCartSwipe {
+  /* height: 380px; */
+  height: 500px;
+  /* height: 535px; */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+button[aria-label="previous"],
+button[aria-label="next"] {
+  background: salmon !important;
+  color: black !important;
+}
+
+.card > div {
+  height: 380px !important;
+}
+
+.card {
+  height: 540px !important;
+}
+
+.slider-control-bottomcenter {
+  bottom: -40px !important;
+}
+.slider-control-bottomcenter > ul > li > button {
+  color: salmon !important;
+}
+.containerImageCartSwipe{
+  height:  100% !important;
+  /* overflow: hidden; */
+  /* overflow: hidden !important */
+}
+.containerImageCartSwipe > div > div{
+  height: 100% !important;
+  overflow: hidden !important;
+}
+.slider-frame{
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+/* .slider-list{
+  height: 100% !important;
+} */
+.slider-slide > img {
+  width: auto !important;
 }

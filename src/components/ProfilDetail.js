@@ -10,7 +10,7 @@ class ProfilDetail extends Component{
                         <img src={require('../assets/icons/arrow-left-icon.png')} alt="nav bottom"/>
                     </Link>
                     <img src={require('../../src/assets/icons/cats-couple-love.png')} className="myImage" alt="Logo"/>
-                    <span>{this.props.addpet? 'Add Pet': 'Profile Pat'}</span>
+                    <span>{this.props.addpet? 'Add Pet': 'Profile Pet'}</span>
                 </div>
                 <div className="profilDetail">
                     <div className="scrollsideLeft">
@@ -58,7 +58,7 @@ class ProfilDetail extends Component{
                         <div className="labelDetailprofil" style={{paddingBottom: 60}}>
                             <div className="contentMyBtnMini">
                                 <Link to="/">
-                                    <button className="myBtnMini">Logout</button>
+                                    <button className="myBtnMini bgDanger">Logout</button>
                                 </Link>
                             </div>
                         </div>

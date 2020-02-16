@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
-import NavSugest from './NavSugest'
-import ActionCardSugest from './ActionCardSugest'
 import CardSugestImage from './CardSugestImage'
 
 class CardSugest extends Component{
@@ -9,15 +7,15 @@ class CardSugest extends Component{
         return(
             <Container fluid={true}>
                 <Row>
-                    <Col xs={3}>
-                    </Col>
-                    <Col xs={8}>
+                    {/* <Col xs={0}>
+                    </Col> */}
+                    <Col xs={11}>
                     <CardSugestImage/>
-                    <ActionCardSugest/>
+                    {/* <ActionCardSugest/> */}
                     </Col>
                     <Col xs={1}>
                     </Col>
-                    <NavSugest/>
+                    {/* <NavSugest/> */}
                 </Row>
             </Container>
             

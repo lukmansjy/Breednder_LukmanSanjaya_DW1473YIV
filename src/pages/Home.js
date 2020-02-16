@@ -40,7 +40,7 @@ class Home extends Component{
                     <div className="nav">
                         <div className="brand">
                             <img src={require('../../src/assets/icons/cats-couple-love.png')} alt="BreedNder Logo" />
-                            <span>BreedNder</span>
+                            <span>PetsMatch</span>
                         </div>
                         <button className="myButtonMenu" onClick={this.handleShowLogin}>Login</button>
                     </div>

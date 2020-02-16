@@ -170,5 +170,51 @@
         "photo": "http://localhost:3000/images/cat-5.jpg",
         "name": "Kucing Bar Bar"
       }
+    ],
+    "dataSwipe": [
+      {
+        "pics": [
+          "http://localhost:3000/images/cat-1.jpg",
+          "http://localhost:3000/images/cat-3.jpg",
+          "http://localhost:3000/images/cat-5.jpg"
+        ],
+        "name": "Kucing Orent",
+        "age": 1,
+        "distance": "1 Km",
+        "breeder": "Lukman Sanjaya"
+      },
+      {
+        "pics": [
+          "http://localhost:3000/images/cat-2.jpg",
+          "http://localhost:3000/images/cat-3.jpg",
+          "http://localhost:3000/images/cat-4.jpg"
+        ],
+        "name": "Kucing Garong",
+        "age": 1,
+        "distance": "2 Km",
+        "breeder": "Lukman Sanjaya"
+      },
+      {
+        "pics": [
+          "http://localhost:3000/images/cat-3.jpg",
+          "http://localhost:3000/images/cat-1.jpg",
+          "http://localhost:3000/images/cat-5.jpg"
+        ],
+        "name": "Kucing Garong",
+        "age": 1,
+        "distance": "2 Km",
+        "breeder": "Lukman Sanjaya"
+      },
+      {
+        "pics": [
+          "http://localhost:3000/images/cat-1.jpg",
+          "http://localhost:3000/images/cat-3.jpg",
+          "http://localhost:3000/images/cat-4.jpg"
+        ],
+        "name": "Kucing Garong",
+        "age": 1,
+        "distance": "2 Km",
+        "breeder": "Lukman Sanjaya"
+      }
     ]
 }

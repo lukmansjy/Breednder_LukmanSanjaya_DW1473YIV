@@ -17,7 +17,7 @@ function App() {
       setState({
         load: false
       })
-  }, 1200);
+  }, 1000);
   })
   return (
     <BrowserRouter>
