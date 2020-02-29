@@ -16,11 +16,10 @@ const users = (state = initialState, action) => {
                 isLoading: true
             }
         case 'POST_USER_LOGIN_FULFILLED':
-            window.localStorage.setItem('token', action.payload.data.token);
+            window.localStorage.setItem('token', action.payload.data.token)
             return {
                 ...state,
                 isLoading: false,
-                data: action.payload.data,
                 loginStatus: true,
                 dataError: []
             }
@@ -57,7 +56,6 @@ const users = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                data: action.payload.data,
                 loginStatus: true,
                 dataError: []
             }
@@ -68,6 +66,7 @@ const users = (state = initialState, action) => {
                 error: true
             }
         
+        // LOGOUT
         case 'USER_LOGOUT':
             return {
                 data: [],
@@ -75,7 +74,28 @@ const users = (state = initialState, action) => {
                 isLoading: false,
                 error: false
             }
-        
+
+        // USER REGISTER
+        case 'POST_USER_REGISTER_PENDING':
+            return {
+                ...state,
+                isLoading: true
+            }
+        case 'POST_USER_REGISTER_FULFILLED':
+            window.localStorage.setItem('token', action.payload.data.token)
+            return {
+                ...state,
+                isLoading: false,
+                data: action.payload.data,
+                loginStatus: true
+            }
+        case 'POST_USER_REGISTER_REJECTED':
+            return {
+                ...state,
+                isLoading: false,
+                error: true
+            }
+
         default:
             return state
     }

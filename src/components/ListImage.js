@@ -60,7 +60,6 @@ class ListImage extends Component{
             this.setPetActive()
         }
 
-        console.log("PETSMATCH", petsMatch)
         return(
             <Fragment>
                 {this.state.redirectProfile ? <Redirect to="/profil"/> : null}
@@ -76,7 +75,7 @@ class ListImage extends Component{
                             <Dropdown.Item as="button" eventKey={index}>
                                 <div className="myPetListWrapper">
                                     <span className="myPetListContainer">
-                                        <img src={petMe.photo} className="myPetImage hoverZoom1-1" alt="Logo"/>
+                                        <img src={petMe.photo ? petMe.photo : `${baseUrl}uploads/pet/pet-img.png`} className="myPetImage hoverZoom1-1" alt="Logo"/>
                                     </span>
                                     <span className="petNames">{petMe.name}</span>
                                 </div>

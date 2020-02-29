@@ -1,33 +1,30 @@
 const initialState = {
     data: [],
     isLoading: false,
-    error: false,
-    paymentSubmit: false
+    error: false
 }
 
-const payment = (state = initialState, action) => {
+const species = (state = initialState, action) => {
     switch(action.type){
 
-        // POST PAYMENT (CREATE)
-        case 'CREATE_PAYMENT_PENDING':
+        // GET ALL SPECIES
+        case 'GET_SPECIES_PENDING':
             return {
                 ...state,
                 isLoading: true,
                 paymentSubmit: false
             }
-        case 'CREATE_PAYMENT_FULFILLED':
+        case 'GET_SPECIES_FULFILLED':
             return {
                 ...state,
                 isLoading: false,
-                data: action.payload.data,
-                paymentSubmit: true
+                data: action.payload.data
             }
-        case 'CREATE_PAYMENT_REJECTED':
+        case 'GET_SPECIES_REJECTED':
             return {
                 ...state,
                 isLoading: false,
-                error: true,
-                paymentSubmit: false
+                error: true
             }
         
         default:
@@ -35,4 +32,4 @@ const payment = (state = initialState, action) => {
     }
 }
 
-export default payment
+export default species

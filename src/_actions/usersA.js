@@ -33,3 +33,14 @@ export const destroyStore = ()=>{
         payload: null
     }
 }
+
+export const userRegister = (data) =>{
+    return {
+        type: 'POST_USER_REGISTER',
+        payload: axios({
+            method: 'POST',
+            url: `${baseUrlApi}register`,
+            data: data
+        })
+    }
+}

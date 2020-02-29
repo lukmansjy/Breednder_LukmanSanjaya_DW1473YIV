@@ -3,7 +3,8 @@ import {Modal, Form } from 'react-bootstrap'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import {userLogin, userLoginToken} from '../_actions/usersA'
+import {userLogin, userLoginToken, userRegister} from '../_actions/usersA'
+import {getAllSpecies} from '../_actions/speciesA'
 import Loading from '../components/Loading'
 
 class Home extends Component{
@@ -12,7 +13,14 @@ class Home extends Component{
         this.state = {
             modalLogin: false,
             modalRegister: false,
-            tokenSaved: false
+            tokenSaved: false,
+            regBreederMsg: '',
+            regEmailMsg: '',
+            regPasswordMsg: '',
+            regPhoneMsg: '',
+            regAddressdMsg: '',
+            regPetNamedMsg: '',
+            regErr: false
         }
     }
 
@@ -48,8 +56,87 @@ class Home extends Component{
         this.props.userLogin(dataLogin)
     }
 
+    handleRegister = (event)=>{
+        event.preventDefault()
+
+        // Reset State
+        this.setState({
+            regBreederMsg: '',
+            regEmailMsg: '',
+            regPasswordMsg: '',
+            regPhoneMsg: '',
+            regAddressdMsg: '',
+            regPetNamedMsg: '',
+            regErr: false
+        })
+
+        let {breeder, email, password, phone, address, petName, petgender, spesiesId, ageId} = event.target.elements
+        let validData = true
+        if(breeder.value.length <= 5){
+            validData = false
+            this.setState({
+                regBreederMsg: 'Breeder Harus Lebih dari 5 karakter!'
+            })
+        }
+        if(email.value.length <= 1){
+            validData = false
+            this.setState({
+                regEmailMsg: 'Email tidak boleh kodong!'
+            })
+        }
+        if(password.value.length <= 6){
+            validData = false
+            this.setState({
+                regPasswordMsg: 'Password Harus Lebih dari 6 karakter!'
+            })
+        }
+        if(phone.value.length <= 6){
+            validData = false
+            this.setState({
+                regPhoneMsg: 'Sepertinya no telepon tidak falid!'
+            })
+        }
+        if(address.value.length <= 1){
+            validData = false
+            this.setState({
+                regAddressdMsg: 'Alamat harus diisi!'
+            })
+        }
+        if(petName.value.length <= 1){
+            validData = false
+            this.setState({
+                regPetNamedMsg: 'Nama Pet harus diisi!'
+            })
+        }
+        if(validData){
+            let dataRegister = {
+                breeder: breeder.value,
+                email: email.value,
+                password: password.value,
+                phone: phone.value,
+                address: address.value,
+                pet: {
+                    name: petName.value,
+                    gender: petgender.value,
+                    spesies: {
+                        id: spesiesId.value
+                    },
+                    age: {
+                        id: ageId.value
+                    }
+                }
+            }
+            console.log(dataRegister)
+            this.props.userRegister(dataRegister)
+        }else{
+            this.setState({
+                regErr: true
+            })
+        }
+    }
+
     componentDidMount(){
-        // cek token
+        this.props.getAllSpecies()
         const token = window.localStorage.getItem('token')
         if(token !== null){
             if(this.props.user.data.length == 0){
@@ -58,15 +145,11 @@ class Home extends Component{
                 }
                 this.props.userLoginToken(data)
             }
-            // console.log('xx', this.props.user)
-            // this.setState({
-            //     tokenSaved: true
-            // })
         }
     }
 
     render(){
-        const {data, dataError, isLoading, error} = this.props.user
+        const {data, dataError, isLoading, loginStatus, error} = this.props.user
 
         // Cek Token Setelah Berhasil Login
         if(data.token != null){
@@ -78,7 +161,7 @@ class Home extends Component{
         }
         return(
             <div className="homeContain">
-                {this.state.tokenSaved || (data.id > 0) ? <Redirect to="/index"/> : null}
+                {loginStatus ? <Redirect to="/index"/> : null}
                 <div className="homeGradient">
                     <div className="nav">
                         <div className="brand">
@@ -108,7 +191,7 @@ class Home extends Component{
                             <button className="btnModalClose" onClick={this.handleHideLogin}>X</button>
                         </div>
                         <form onSubmit={this.handleLogin}>
-                        <div className="formModal">
+                            <div className="formModal">
                             
                                 <Form.Control name="email" type="email" placeholder="Email" />
                                 <Form.Control name="password"  type="password" placeholder="Password" />
@@ -122,35 +205,70 @@ class Home extends Component{
                                 {/* </Link> */}
 
                             
-                        </div>
+                            </div>
                         </form>
                     </Modal>
 
                     {/* MODAL Register */}
                     <Modal show={this.state.modalRegister} onHide={this.handleHideRegister} className="modalContent">
                         <div>
-                            <span className="modalTitle">Register</span>
+                            <p className="modalTitle">Register</p>
                             <button className="btnModalClose" onClick={this.handleHideRegister}>X</button>
                         </div>
-                        <div className="formModal formRegister">
-                            <Form.Control type="text" placeholder="Breeder" />
-                            <Form.Control type="email" placeholder="Email" />
-                            <Form.Control type="password" placeholder="Password" />
-                            <Form.Control type="number" placeholder="Phone Breeder" />
-                            <Form.Control type="text" placeholder="Adrees Breeder" />
-                            <Form.Control type="text" placeholder="Name Pet" />
-                            <Form.Control type="text" placeholder="Gender Pet" />
-                            <Form.Control as="select" style={{marginBottom: 15}}>
-                                <option>Spesies Pet</option>
-                                <option value="Cat">Cat</option>
-                                <option value="Dog">Dog</option>
-                                <option value="Rabbit">Rabbit</option>
-                                <option value="Bird">Bird</option>
-                                <option value="Sugar Glider">Sugar Glider</option>
-                            </Form.Control>  
-                            <Form.Control type="text" placeholder="Age" />
-                            <button className="myButton">Register</button>
-                        </div>
+                        <form onSubmit={this.handleRegister}>
+                            <div className="formModal formRegister">
+                                <p className="labelRegister">Breeder</p>
+                                <span className="msgInputErr">{this.state.regBreederMsg}</span>
+                                <Form.Control className={this.state.regBreederMsg.length > 0 ? 'is-invalid': ''} name="breeder" type="text" placeholder="Your Name" />
+
+                                <p className="labelRegister">Email</p>
+                                <span className="msgInputErr">{this.state.regEmailMsg}</span>
+                                <Form.Control className={this.state.regEmailMsg.length > 0 ? 'is-invalid': ''} name="email" type="email" placeholder="Email" />
+
+                                <p className="labelRegister">Password</p>
+                                <span className="msgInputErr">{this.state.regPasswordMsg}</span>
+                                <Form.Control className={this.state.regPasswordMsg.length > 0 ? 'is-invalid': ''} name="password" type="password" placeholder="Password" />
+
+                                <p className="labelRegister">Phone Breeder</p>
+                                <span className="msgInputErr">{this.state.regPhoneMsg}</span>
+                                <Form.Control className={this.state.regPhoneMsg.length > 0 ? 'is-invalid': ''} name="phone" type="number" placeholder="Your Phone Number" />
+
+                                <p className="labelRegister">Adress Breeder</p>
+                                <span className="msgInputErr">{this.state.regAddressdMsg}</span>
+                                <Form.Control className={this.state.regAddressdMsg.length > 0 ? 'is-invalid': ''} name="address" type="text" placeholder="Adrees Breeder" />
+
+                                <p className="labelRegister">Name Pet</p>
+                                <span className="msgInputErr">{this.state.regPetNamedMsg}</span>
+                                <Form.Control className={this.state.regPetNamedMsg.length > 0 ? 'is-invalid': ''} name="petName" type="text" placeholder="Name Pet" />
+
+                                <p className="labelRegister">Gender Pet</p>
+                                <Form.Control name="petgender" as="select" style={{marginBottom: 15}}>
+                                    <option value="Male">Male</option>
+                                    <option value="Famale">Famale</option>
+                                </Form.Control>
+
+                                <p className="labelRegister">Species Pet</p>
+                                <Form.Control name="spesiesId" as="select" style={{marginBottom: 15}}>
+                                    {this.props.species ? 
+                                    
+                                    this.props.species.map((species)=>(
+                                        <option value={species.id}>{species.name}</option>
+                                    ))
+                                    
+                                    : null}
+                                </Form.Control>
+
+                                <p className="labelRegister">Age Pet</p>
+                                <Form.Control name="ageId" as="select" style={{marginBottom: 15}}>
+                                    <option value="1">Child</option>
+                                    <option value="2">Teenager</option>
+                                    <option value="3">Adult</option>
+                                </Form.Control>
+
+                                {this.state.regErr ? <p className="msgInputErr">From input ada yang salah, silakan cek keatas. Jika sudah diperbaiki silakan klik Register kembali</p> : ''}
+                                <button type="submit" className="myButton">Register</button>
+                            </div>
+                        </form>
                     </Modal>
 
                 </div>
@@ -166,14 +284,17 @@ class Home extends Component{
 
 const mapStateToProps = (state) =>{
     return{
-        user: state.users
+        user: state.users,
+        species: state.species.data
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         userLogin: (data)=> dispatch( userLogin(data) ),
-        userLoginToken: (data)=> dispatch( userLoginToken(data) )
+        userLoginToken: (data)=> dispatch( userLoginToken(data) ),
+        getAllSpecies: ()=> dispatch( getAllSpecies() ),
+        userRegister: (data) => dispatch( userRegister(data) )
     }
 }
 

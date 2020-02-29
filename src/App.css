@@ -674,8 +674,14 @@ button {
   margin-left: 2px;
 }
 .modalKomfrimPay{
-  margin-top: 15%;
+  margin-top: 5%;
   text-align: center;
+}
+.containModalPay{
+  margin: 20px 0 8px 0;
+}
+.containModalPay > p {
+  margin: 2px;
 }
 button:hover{
   background: rgba(113, 158, 206, 0.3);
@@ -903,4 +909,15 @@ button[aria-label="next"] {
 .myPetListWrapper{
   height: 50px;
   width: 190px;
+}
+.labelRegister{
+  font-size: 14px;
+  text-align: left !important;
+  margin: 4px;
+  color: rgb(78, 78, 78);
+  font-weight: 500;
+}
+.msgInputErr{
+  color: rgb(248, 100, 100);
+  font-size: 12px;
 }

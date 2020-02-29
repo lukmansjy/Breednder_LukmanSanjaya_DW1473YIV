@@ -3,7 +3,6 @@ import {baseUrl} from '../config'
 
 class ImageCardMatch extends Component{
     render(){
-        console.log("DATATTTTTTTT",this.props.data)
         const {pet_liked} = this.props.data
         if(pet_liked.photo == null){
             pet_liked.photo = `${baseUrl}uploads/pet/pet-img.png`

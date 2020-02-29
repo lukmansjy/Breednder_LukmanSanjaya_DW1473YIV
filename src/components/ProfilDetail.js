@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import {destroyStore} from '../_actions/usersA'
+import {baseUrl} from '../config'
 
 class ProfilDetail extends Component{
     constructor(){
@@ -13,7 +14,8 @@ class ProfilDetail extends Component{
             logOut: false,
             dataSet: false,
             phone: '',
-            photoPet: ''
+            photoPet: '',
+            email: ''
         }
     }
     handleDistance =(event)=>{
@@ -31,15 +33,25 @@ class ProfilDetail extends Component{
         })
     }
     render(){
-        console.log(this.props.petProfileAktif)
+        console.log('Profil Detail',this.props.petProfileAktif)
         const {user, photo} = this.props.petProfileAktif
-        const {phone} = this.state
+        const {phone, email} = this.state
         if(this.props.user.loginStatus && this.state.dataSet == false){
-            this.setState({
-                phone: user.phone,
-                photoPet: photo,
-                dataSet: true
-            })
+            if(photo == null){
+                this.setState({
+                    phone: user.phone,
+                    photoPet: `${baseUrl}uploads/pet/pet-img.png`,
+                    dataSet: true,
+                    email: user.email
+                })
+            }else{
+                this.setState({
+                    phone: user.phone,
+                    photoPet: photo,
+                    dataSet: true,
+                    email: user.email
+                })
+            }
         }
         return(
             <Fragment>
@@ -58,7 +70,7 @@ class ProfilDetail extends Component{
                         <img className="hoverZoom1-8 navProfileRight" src={require('../assets/icons/arrow-left-icon.png')} alt="nav bottom"/>
                     </Link>
                     <div className="myPetImageContainerProfil">
-                        <img src={photo} className="myImageProfil" alt="Logo"/>
+                        <img src={this.state.photoPet} className="myImageProfil" alt="Logo"/>
                     </div>
                     <span>{this.props.addpet? 'Add Pet': 'Profile Pet'}</span>
                 </div>
@@ -67,7 +79,7 @@ class ProfilDetail extends Component{
                         <p className="labelBig">Account Settings</p>  
                         <div className="labelDetailprofil marginLebelProfil">
                             <span className="left">Email</span>
-                            <span className="right">lukman.rocks@live.com</span>
+                            <span className="right">{email}</span>
                         </div>
                         <div className="labelDetailprofil marginLebelProfil">
                             <span className="left">Phone</span>

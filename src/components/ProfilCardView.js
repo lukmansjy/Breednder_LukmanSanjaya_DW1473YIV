@@ -1,18 +1,20 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import {Modal} from 'react-bootstrap'
 import {Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import {createPeyment} from '../_actions/paymentA'
+import {baseUrl} from '../config'
 
 const ProfilCardView = (props)=>{
-    console.log(props.dataPet)
     const [state, setState] = useState({
         modalShowPayment: false,
         modalShowConfrim: false,
         addPet: false,
         payConfrm: false,
-        imgPay: require('../assets/icons/camera-icon.png')
+        imgPay: require('../assets/icons/camera-icon.png'),
+        noRek: null,
+        imgTransfer: null
     })
 
     const handleModalShowPayment = ()=>{
@@ -34,12 +36,12 @@ const ProfilCardView = (props)=>{
             modalShowPayment: false,
             modalShowConfrim: true
         })
-        setTimeout(()=>{
-            setState({
-                ...state,
-                payConfrm: true
-            })
-        }, 3000);
+        // setTimeout(()=>{
+        //     setState({
+        //         ...state,
+        //         payConfrm: true
+        //     })
+        // }, 3000);
     }
     const handleModaConfrimClose = ()=>{
         setState({
@@ -57,25 +59,38 @@ const ProfilCardView = (props)=>{
 
     const handlePayment = (event) =>{
         event.preventDefault()
-        const selectedFile = event.target.elements.picture.files[0]
-        const picture = new FormData() 
-        picture.append('file', selectedFile)
-        let dataPayment = {
-            no_rek: event.target.elements.no_rek.value,
-            status: 'free',
-            picture
-        }
-        console.log('YYYYYYYYY',dataPayment)
-        // console.log(dataPayment.picture.file)
-        props.createPeyment(picture)
+        const file = event.target.elements.picture.files[0]
+        const noRek = event.target.elements.no_rek.value
+        let formData = new FormData() 
+        formData.append('payment', file)
+        formData.append('no_rek', noRek)
+        formData.append('status', 'free')
+        props.createPeyment(formData)
     }
+
+    if(props.payment.paymentSubmit && state.noRek == null){
+        let {no_rek, proof_of_transfer} = props.payment.data
+        setState({
+            ...state,
+            noRek: no_rek,
+            imgTransfer: proof_of_transfer
+        })
+        
+    }
+
+    useEffect(()=>{
+        if(state.modalShowPayment === true){
+            handleModalShowConfrim()
+            
+        }
+    }, [state.noRek])
 
     return(
         <Fragment>
             {state.payConfrm? <Redirect to="/add-pet" />: ''}
             <div className="cardFrontImg">
                 <div className="profilImgCard">
-                    <img src={props.dataPet.photo} alt="Pet"/>
+                    <img src={props.dataPet.photo ? props.dataPet.photo : `${baseUrl}uploads/pet/pet-img.png`} alt="Pet"/>
                     <div className="cardIndicatorLeft indicatorActive"></div>
                     <div className="cardIndicatorRight"></div>
                 </div>
@@ -85,8 +100,8 @@ const ProfilCardView = (props)=>{
                 <p className="nameBreeder">{props.dataPet.name}</p>
                 <p className="detailBreeder"><img src={require('../assets/icons/person-icon.png')} alt="Person Icon"/> Breeder: {props.dataPet.user ? props.dataPet.user.breeder : null}</p>
                 <p className="detailBreeder"><img src={require('../assets/icons/place-icon.png')} alt="Place Icon"/> 1 mm dari sini</p>
-                <p className="detailBreeder"><img src={require('../assets/icons/gender-icon.png')} alt="Gender Icon"/> Male - Adult</p>
-                <p className="detailBreeder"><img src={require('../assets/icons/phone-icon.png')} alt="Phone Icon"/> 082226455525</p>
+                <p className="detailBreeder"><img src={require('../assets/icons/gender-icon.png')} alt="Gender Icon"/> {props.dataPet.user ? `${props.dataPet.gender} - ${props.dataPet.age.name}` : null}</p>
+                <p className="detailBreeder"><img src={require('../assets/icons/phone-icon.png')} alt="Phone Icon"/> {props.dataPet.user ? props.dataPet.user.phone : null}</p>
                 <div className="contentMyBtnMini">
                     <button className="myBtnMini" onClick={props.hendleEdit}>Edit</button>
                 </div>
@@ -120,8 +135,17 @@ const ProfilCardView = (props)=>{
 
             {/* MODAL PREMIUM CONFRIM*/}
             <Modal show={state.modalShowConfrim} onHide={handleModaConfrimClose} className="modalKomfrimPay">
-                <h3>Konfirmasi Terkirim</h3>
-                <p>Terimakasih Silakan Tunggu Konfirmasi pembayaran</p>
+                <div>
+                    <button className="btnModalClose" onClick={handleModaConfrimClose}>X</button>
+                </div>
+                <div className="containModalPay">
+                    <h3>Konfirmasi Terkirim</h3>
+                    <p>Terimakasih Silakan Tunggu Konfirmasi pembayaran</p>
+                    <p><h5><u>Detail:</u></h5></p>
+                    <p>No Rek Kamu: <b>{state.noRek}</b></p>
+                    <p>Bukti Transfer:</p>
+                    <p>{state.imgTransfer ? <img src={state.imgTransfer} width="280px"/> : null}</p>
+                </div>
             </Modal>
         </Fragment>
     )
@@ -129,14 +153,13 @@ const ProfilCardView = (props)=>{
 
 const mapStateToProps = (state) =>{
     return{
-        user: state.users
+        payment: state.payment
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createPeyment: (data)=> dispatch( createPeyment(data) ),
-        // userLoginToken: (data)=> dispatch( userLoginToken(data) )
+        createPeyment: (data)=> dispatch( createPeyment(data) )
     }
 }
 
