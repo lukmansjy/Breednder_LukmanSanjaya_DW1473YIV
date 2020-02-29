@@ -8,36 +8,38 @@ class Card extends React.Component {
     const { i, x, y, rot, scale, trans, bind, data } = this.props;
     const { name, distance, breeder, pics } = data[i];
 
+    console.log('X:',x)
+    console.log('Y:',y)
     return (
-      <animated.div
-        key={i}
-        style={{
-          transform: interpolate(
-            [x, y],
-            (x, y) => `translate3d(${x}px,${y}px,0)`
-          )
-        }}
-      >
         <animated.div
-          {...bind(i)}
+          key={i}
           style={{
-            transform: interpolate([rot, scale], trans)
+            transform: interpolate(
+              [x, y],
+              (x, y) => `translate3d(${x}px,${y}px,0)`
+            )
           }}
         >
-          <div className="card">
-            <Carousel className="containerImageCartSwipe">
-              {pics.map((pic, index) => (
-                <img className="imageCartSwipe" src={pic} key={index} alt="profilePicture"/>
-              ))}
-            </Carousel>
-            <div className="detailCard" style={{zIndex: 9}}>
-                <p className="nameBreeder">{name}</p>
-                <p className="detailBreeder"><img src={require('../../assets/icons/person-icon.png')} alt="Person Icon"/> Breeder: {breeder}</p>
-                <p className="detailBreeder"><img src={require('../../assets/icons/place-icon.png')} alt="Place Icon"/> {distance} dari sini</p>
+          <animated.div
+            {...bind(i)}
+            style={{
+              transform: interpolate([rot, scale], trans)
+            }}
+          >
+            <div className="card">
+              <Carousel className="containerImageCartSwipe">
+                {pics.map((pic, index) => (
+                  <img className="imageCartSwipe hoverZoom1-1" src={pic} key={index} alt="profilePicture"/>
+                ))}
+              </Carousel>
+              <div className="detailCard" style={{zIndex: 9}}>
+                  <p className="nameBreeder">{name}</p>
+                  <p className="detailBreeder"><img src={require('../../assets/icons/person-icon.png')} alt="Person Icon"/> Breeder: {breeder}</p>
+                  <p className="detailBreeder"><img src={require('../../assets/icons/place-icon.png')} alt="Place Icon"/> {distance} dari sini</p>
+              </div>
             </div>
-          </div>
+          </animated.div>
         </animated.div>
-      </animated.div>
     );
   }
 }

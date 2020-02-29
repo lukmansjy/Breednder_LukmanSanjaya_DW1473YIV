@@ -33,7 +33,7 @@
   width: 100%;
   height: 5px;
   border-radius: 5px;
-  background: linear-gradient(-90deg, rgba(236,122,122,1) 0%, rgba(236,122,122,0.25) 100%);
+  /* background: linear-gradient(-90deg, rgba(236,122,122,1) 0%, rgba(236,122,122,0.25) 100%); */
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
@@ -224,10 +224,29 @@
   width: 100%;
   z-index:2;
 }
-.myImage{
+.myPetImageContainer{
   width: 50px;
+  height: 50px;
   border: 2px solid white;
   border-radius: 50%;
+  overflow: hidden;
+  display: inline-block !important;
+}
+.myImage{
+  width: 50px;
+  padding: 0;
+}
+.myPetImageContainerProfil{
+  width: 50px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block !important;
+  margin-left: 30px;
+}
+.myImageProfil{
+  width: 50px;
 }
 .profilNav > span{
   color: white;
@@ -235,6 +254,14 @@
   font-size: 20px;
   margin-left: 12px;
   margin-right: 4px;
+  position: absolute;
+  left: 82px;
+  top: 16px;
+}
+.navProfileRight{
+  position: absolute;
+  left: 2px;
+  top: 14px
 }
 .col-4{
   padding-right: 0 !important;
@@ -326,6 +353,9 @@
   padding-bottom: 0px;
   background: linear-gradient(180deg, rgba(236,122,147,0) 0%, rgba(236,122,147,1) 70%);
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
+      39 39,
+    auto;
 }
 .nameBreeder{
   margin: 0px;
@@ -436,7 +466,7 @@
   border-top-right-radius: 6px;
 }
 .profilImgCard > img{
-  height: 520px;
+  height: 620px;
   position: absolute;
   left: -100px;
 }
@@ -657,17 +687,17 @@ button:hover{
 .splashScreen{
   width: 100%;
   height: 100vh;
-  background: linear-gradient(0deg, #EC7A7A 0%, #EC7AB7 100%);
+  background: linear-gradient(0deg, rgba(236, 122, 122, 0.7) 0%, rgba(236, 122, 183, 0.7) 100%);
   text-align: center;
   color: white;
 }
 .splashScreen > img{
-  width: 150px;
-  margin-top: 22vh;
+  width: 200px;
+  margin-top: 26vh;
   margin-bottom: 30px;
 }
 .rotate {
-  animation: rotation 2s infinite linear;
+  animation: rotation 1.6s infinite linear;
 }
 @keyframes rotation {
   from {
@@ -743,7 +773,9 @@ button:hover{
 button[aria-label="previous"],
 button[aria-label="next"] {
   background: salmon !important;
-  color: black !important;
+  color: white !important;
+  margin-top: 100px;
+  text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.568);
 }
 
 .card > div {
@@ -759,6 +791,13 @@ button[aria-label="next"] {
 }
 .slider-control-bottomcenter > ul > li > button {
   color: salmon !important;
+  cursor: pointer !important;
+  padding-bottom: 30px !important;
+  padding-top: 30px !important;
+  outline:none;
+}
+.slider-control-bottomcenter > ul > li > button:hover{
+  background: radial-gradient(circle, rgba(1,1,1,1) 0%, rgba(255,255,255,0) 32%) !important;
 }
 .containerImageCartSwipe{
   height:  100% !important;
@@ -778,4 +817,90 @@ button[aria-label="next"] {
 } */
 .slider-slide > img {
   width: auto !important;
+}
+.hoverZoom1-1:hover {
+	-webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  opacity: 0.88;
+}
+.hoverZoom1-8:hover{
+  -webkit-transform: scale(1.6);
+  transform: scale(1.6);
+  opacity: 0.9;
+}
+.hoverZoom1-2:hover{
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  opacity: 0.88;
+}
+.textError{
+  color: rgb(247, 70, 70);
+  font-size: 14px;
+}
+
+.loadingInfo{
+  margin: 20px 0 8px 0;
+}
+.loadingInfo > img {
+  height: 35px;
+}
+.dropdwonPets{
+  display: inline !important;
+  margin-left: 4px;
+  position: absolute !important;
+  top: 12px !important;
+}
+.dropdwonPets > button{
+  background: rgba(255, 255, 255, 0);
+  border: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.dropdwonPets > button:hover{
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+.dropdwonPets > button:active{
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  color: #fff !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+  color: #fff;
+  background-color: #ffffff00 !important;
+  border-color: #ffffff00 !important;
+  box-shadow: none !important;
+}
+.myPetListContainer{
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgb(197, 197, 197);
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block !important;
+  position: absolute;
+}
+.myPetImage{
+  width: 50px;
+  display: inline-block;
+}
+.petNames{
+  position: relative;
+  display: inline-block;
+  left: 62px;
+  top: 11px;
+  color: rgb(88, 88, 88);
+  font-weight: 500;
+}
+.myPetListWrapper{
+  height: 50px;
+  width: 190px;
 }

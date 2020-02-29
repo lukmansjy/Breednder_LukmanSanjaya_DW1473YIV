@@ -9,7 +9,7 @@ class CardSugestImage extends Component{
         return(
             <div>
                     <div className="containerCardSwipe">
-                        <Deck/>
+                        {/* <Deck/> */}
                     </div>
                     <div style={{position: 'absolute', bottom: -680, left: '31%'}}>
                             <ActionCardSugest/>

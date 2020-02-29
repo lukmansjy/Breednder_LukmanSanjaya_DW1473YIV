@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 import ProfilDetail from '../components/ProfilDetail'
 import ProfilCard from '../components/ProfilCard'
+import { connect } from 'react-redux'
 
 class Profil extends Component {
     render(){
@@ -20,4 +21,20 @@ class Profil extends Component {
     }
 }
 
-export default Profil
+const mapStateToProps = (state) =>{
+    console.log('DATA REDUX PROFILE', state)
+    return{
+        user: state.users,
+        petsMe: state.pets.petsMe,
+        petsMatch: state.pets.matchs
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // createPeyment: (data)=> dispatch( createPeyment(data) ),
+        // userLoginToken: (data)=> dispatch( userLoginToken(data) )
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profil)

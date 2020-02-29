@@ -37,6 +37,7 @@ function Deck() {
       direction: [xDir],
       velocity
     }) => {
+      // alert('bind')
       const trigger = velocity > 0.2;
 
       const dir = xDir < 0 ? -1 : 1;
@@ -76,6 +77,7 @@ function Deck() {
       trans={trans}
       data={data}
       bind={bind}
+      key={i}
     />
   ));
 }
