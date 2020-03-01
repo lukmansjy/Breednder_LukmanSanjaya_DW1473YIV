@@ -3,7 +3,8 @@ import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import {destroyStore} from '../_actions/usersA'
-import {baseUrl} from '../config'
+import {baseUrlApi} from '../config'
+import {dataAges} from '../config/datas'
 
 class ProfilDetail extends Component{
     constructor(){
@@ -15,7 +16,9 @@ class ProfilDetail extends Component{
             dataSet: false,
             phone: '',
             photoPet: '',
-            email: ''
+            email: '',
+            age: null,
+            species: ''
         }
     }
     handleDistance =(event)=>{
@@ -33,23 +36,28 @@ class ProfilDetail extends Component{
         })
     }
     render(){
+        console.log('DATA AGE', dataAges)
         console.log('Profil Detail',this.props.petProfileAktif)
-        const {user, photo} = this.props.petProfileAktif
+        const {user, photo, age, species} = this.props.petProfileAktif
         const {phone, email} = this.state
         if(this.props.user.loginStatus && this.state.dataSet == false){
             if(photo == null){
                 this.setState({
                     phone: user.phone,
-                    photoPet: `${baseUrl}uploads/pet/pet-img.png`,
+                    photoPet: `${baseUrlApi}/uploads/pet/pet-img.png`,
                     dataSet: true,
-                    email: user.email
+                    email: user.email,
+                    age: age,
+                    species: species.name
                 })
             }else{
                 this.setState({
                     phone: user.phone,
                     photoPet: photo,
                     dataSet: true,
-                    email: user.email
+                    email: user.email,
+                    age: age,
+                    species: species.name
                 })
             }
         }
@@ -92,7 +100,6 @@ class ProfilDetail extends Component{
                         </div>
                         <div className="labelDetailprofil">
                             <div className="mySliderRangeContainer">
-                            {/* className="mySliderRange" */}
                                 <input type="range" className="mySliderRange"
                                 style={{background: `linear-gradient(-90deg, rgba(${255 - (this.state.valueRange * 2.5)}, ${this.state.valueRange * 2.5} ,0,1) 0%, rgba(236,122,122,0.25) 100%)`}} 
                                 onChange={this.handleDistance} value={this.state.valueRange} />
@@ -103,9 +110,22 @@ class ProfilDetail extends Component{
                         </div>
                         <div className="labelDetailprofil">
                             <select className="myInputSelect">
-                                <option value="Child">Child</option>
-                                <option value="Teenager">Teenager</option>
-                                <option value="Adult">Adult</option>
+
+                                {dataAges && this.state.age ? 
+                                    
+                                    dataAges.map((age, index)=>(
+
+                                        <Fragment>
+                                            { (index+1) == this.state.age.id ? 
+                                                <option selected value={index+1}>{age}</option>  :
+                                                <option value={index+1}>{age}</option>
+                                            }
+                                        </Fragment>
+                                        
+                                    ))
+                                    
+                                : null}
+
                             </select>  
                         </div>
                         <div className="labelDetailprofil">
@@ -113,11 +133,22 @@ class ProfilDetail extends Component{
                         </div>
                         <div className="labelDetailprofil">
                             <select className="myInputSelect">
-                                <option value="Cat">Cat</option>
-                                <option value="Dog">Dog</option>
-                                <option value="Rabbit">Rabbit</option>
-                                <option value="Bird">Bird</option>
-                                <option value="Sugar Glider">Sugar Glider</option>
+
+                                {this.props.species ? 
+                                    
+                                    this.props.species.map((species)=>(
+
+                                        <Fragment>
+                                            {this.state.species == species.name ? 
+                                                <option selected value={species.id}>{species.name}</option>  :
+                                                <option value={species.id}>{species.name}</option>
+                                            }
+                                        </Fragment>
+                                        
+                                    ))
+                                    
+                                : null}
+
                             </select>  
                         </div>
                         <div className="labelDetailprofil" style={{paddingBottom: 60}}>
@@ -140,7 +171,8 @@ const mapStateToProps = (state) =>{
         user: state.users,
         petsMe: state.pets.petsMe,
         petsMatch: state.pets.matchs,
-        petProfileAktif: state.pets.petProfileAktif
+        petProfileAktif: state.pets.petProfileAktif,
+        species: state.species.data
     }
 }
 

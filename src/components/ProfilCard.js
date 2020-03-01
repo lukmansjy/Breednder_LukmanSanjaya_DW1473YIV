@@ -16,6 +16,7 @@ class ProfilCard extends Component{
             editProfil: true
         })
     }
+
     handleEditProfileSave = () =>{
         this.setState({
             editProfil: false
@@ -28,7 +29,15 @@ class ProfilCard extends Component{
                     <Col xs={3}>
                     </Col>
                     <Col xs={8}>
-                        {this.state.editProfil ? <ProfilCardEdit handleSave={this.handleEditProfileSave}/> : <ProfilCardView dataPet={this.props.petProfileAktif} hendleEdit={this.handleEditProfile}/>}
+
+                        {this.state.editProfil ? 
+                            <ProfilCardEdit handleSave={this.handleEditProfileSave}/> : 
+                            <ProfilCardView
+                                dataPet={this.props.petProfileAktif}
+                                hendleEdit={this.handleEditProfile}
+                            />
+                        }
+
                     </Col>
                     <Col xs={1}>
                     </Col>
@@ -40,19 +49,11 @@ class ProfilCard extends Component{
 }
 
 const mapStateToProps = (state) =>{
-    console.log('REDUX PROFIL DETAIL',state)
+    console.log('REDUX PROFIL DETAIL NEW',state)
     return{
-        user: state.users,
-        petsMe: state.pets.petsMe,
-        petsMatch: state.pets.matchs,
         petProfileAktif: state.pets.petProfileAktif
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        // destroyStore: ()=> dispatch( destroyStore() )
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilCard)
+export default connect(mapStateToProps)(ProfilCard)

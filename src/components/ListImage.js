@@ -6,7 +6,7 @@ import dataJson from '../assets/data/db.json'
 import { connect } from 'react-redux'
 
 import {getPetsMatch, setPetProfileActive} from '../_actions/petsA'
-import {baseUrl} from '../config'
+import {baseUrlApi} from '../config'
 
 class ListImage extends Component{
     constructor(){
@@ -14,7 +14,7 @@ class ListImage extends Component{
 
         this.state = {
             activePetName: null,
-            activePetPhoto: `${baseUrl}uploads/pet/pet-img.png`,
+            activePetPhoto: null,
             petProfileActive: [],
             redirectProfile: null
         }
@@ -27,13 +27,17 @@ class ListImage extends Component{
 
     setPetActive(id = 0){
         if(this.props.petsMe.length > 0){
-            this.setState({
-                activePetName: this.props.petsMe[id].name,
-                petProfileActive: this.props.petsMe[id]
-            })
             if(this.props.petsMe[id].photo != null){
                 this.setState({
-                    activePetPhoto: this.props.petsMe[id].photo
+                    activePetPhoto: this.props.petsMe[id].photo,
+                    activePetName: this.props.petsMe[id].name,
+                    petProfileActive: this.props.petsMe[id]
+                })
+            }else{
+                this.setState({
+                    activePetPhoto: `${baseUrlApi}/uploads/pet/pet-img.png`,
+                    activePetName: this.props.petsMe[id].name,
+                    petProfileActive: this.props.petsMe[id]
                 })
             }
             this.props.getPetsMatch(this.props.petsMe[id].id)
@@ -60,6 +64,9 @@ class ListImage extends Component{
             this.setPetActive()
         }
 
+        console.log(`${baseUrlApi}/uploads/pet/pet-img.png`)
+        // alert(this.state.activePetPhoto)
+
         return(
             <Fragment>
                 {this.state.redirectProfile ? <Redirect to="/profil"/> : null}
@@ -75,7 +82,7 @@ class ListImage extends Component{
                             <Dropdown.Item as="button" eventKey={index}>
                                 <div className="myPetListWrapper">
                                     <span className="myPetListContainer">
-                                        <img src={petMe.photo ? petMe.photo : `${baseUrl}uploads/pet/pet-img.png`} className="myPetImage hoverZoom1-1" alt="Logo"/>
+                                        <img src={petMe.photo ? petMe.photo : `${baseUrlApi}/uploads/pet/pet-img.png`} className="myPetImage hoverZoom1-1" alt="Logo"/>
                                     </span>
                                     <span className="petNames">{petMe.name}</span>
                                 </div>

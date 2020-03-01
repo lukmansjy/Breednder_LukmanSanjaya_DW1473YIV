@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-import {baseUrlApi} from '../config'
+import {baseUrlApiVersion, headerAuthorization} from '../config'
 
 export const userLogin = (data)=>{
     return {
         type: 'POST_USER_LOGIN',
         payload: axios({
             method: 'POST',
-            url: `${baseUrlApi}/login`,
+            url: `${baseUrlApiVersion}/login`,
             data: data
         })
     }
@@ -18,10 +18,11 @@ export const userLoginToken = (data)=>{
         type: 'USER_LOGIN_TOKEN',
         payload: axios({
             method: 'POST',
-            url: `${baseUrlApi}/loginToken`,
-            headers: {
-                Authorization: `Bearer ${data.token}`
-            },
+            url: `${baseUrlApiVersion}/loginToken`,
+            headers: headerAuthorization,
+            // headers: {
+            //     Authorization: `Bearer ${data.token}`
+            // },
             data: data
         })
     }
@@ -39,7 +40,7 @@ export const userRegister = (data) =>{
         type: 'POST_USER_REGISTER',
         payload: axios({
             method: 'POST',
-            url: `${baseUrlApi}register`,
+            url: `${baseUrlApiVersion}/register`,
             data: data
         })
     }

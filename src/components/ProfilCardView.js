@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import {createPeyment} from '../_actions/paymentA'
-import {baseUrl} from '../config'
+import {baseUrlApi} from '../config'
 
 const ProfilCardView = (props)=>{
     const [state, setState] = useState({
@@ -90,7 +90,7 @@ const ProfilCardView = (props)=>{
             {state.payConfrm? <Redirect to="/add-pet" />: ''}
             <div className="cardFrontImg">
                 <div className="profilImgCard">
-                    <img src={props.dataPet.photo ? props.dataPet.photo : `${baseUrl}uploads/pet/pet-img.png`} alt="Pet"/>
+                    <img src={props.dataPet.photo ? props.dataPet.photo : `${baseUrlApi}/uploads/pet/pet-img.png`} alt="Pet"/>
                     <div className="cardIndicatorLeft indicatorActive"></div>
                     <div className="cardIndicatorRight"></div>
                 </div>
@@ -98,10 +98,22 @@ const ProfilCardView = (props)=>{
             </div>
             <div className="profilImgCardDetail">
                 <p className="nameBreeder">{props.dataPet.name}</p>
-                <p className="detailBreeder"><img src={require('../assets/icons/person-icon.png')} alt="Person Icon"/> Breeder: {props.dataPet.user ? props.dataPet.user.breeder : null}</p>
-                <p className="detailBreeder"><img src={require('../assets/icons/place-icon.png')} alt="Place Icon"/> 1 mm dari sini</p>
-                <p className="detailBreeder"><img src={require('../assets/icons/gender-icon.png')} alt="Gender Icon"/> {props.dataPet.user ? `${props.dataPet.gender} - ${props.dataPet.age.name}` : null}</p>
-                <p className="detailBreeder"><img src={require('../assets/icons/phone-icon.png')} alt="Phone Icon"/> {props.dataPet.user ? props.dataPet.user.phone : null}</p>
+                <p className="detailBreeder">
+                    <img src={require('../assets/icons/person-icon.png')}
+                        alt="Person Icon"/> Breeder: {props.dataPet.user ? props.dataPet.user.breeder : null}
+                </p>
+                <p className="detailBreeder">
+                    <img src={require('../assets/icons/place-icon.png')}
+                        alt="Place Icon"/> 1 mm dari sini
+                </p>
+                <p className="detailBreeder">
+                    <img src={require('../assets/icons/gender-icon.png')}
+                        alt="Gender Icon"/> {props.dataPet.user ? `${props.dataPet.gender} - ${props.dataPet.age.name}` : null}
+                </p>
+                <p className="detailBreeder">
+                    <img src={require('../assets/icons/phone-icon.png')}
+                        alt="Phone Icon"/> {props.dataPet.user ? props.dataPet.user.phone : null}
+                </p>
                 <div className="contentMyBtnMini">
                     <button className="myBtnMini" onClick={props.hendleEdit}>Edit</button>
                 </div>
@@ -118,7 +130,7 @@ const ProfilCardView = (props)=>{
                         <button className="btnModalClose" onClick={handleModaPaymentlClose}>X</button>
                     </div>
                     <p>Upgrade Breednder mu dan nikmati fitur-fitur <b>PRO</b>.</p>
-                    <p><b>Breednder: 303030303030</b></p>
+                    <p><b>Breednder: 670{props.dataPet.user ? props.dataPet.user.id : null}</b></p>
                     <form enctype="multipart/form-data" onSubmit={handlePayment}>
                         <input name="no_rek" className="inputTextPremium" type="text" placeholder="No Rek. Kamu"/>
                         <div className="imageUpload">

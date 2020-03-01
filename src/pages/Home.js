@@ -126,7 +126,6 @@ class Home extends Component{
                     }
                 }
             }
-            console.log(dataRegister)
             this.props.userRegister(dataRegister)
         }else{
             this.setState({

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import {baseUrlApi} from '../config'
+import {baseUrlApiVersion} from '../config'
 
 // CREATE PAYMENT
 export const createPeyment = (data)=>{
@@ -9,7 +9,7 @@ export const createPeyment = (data)=>{
         type: 'CREATE_PAYMENT',
         payload: axios({
             method: 'POST',
-            url: `${baseUrlApi}/payment`,
+            url: `${baseUrlApiVersion}/payment`,
             headers: {
                 Authorization: `Bearer ${token}`
             },

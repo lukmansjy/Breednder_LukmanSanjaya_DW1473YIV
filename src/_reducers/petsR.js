@@ -4,7 +4,10 @@ const initialState = {
     dataError:[],
     isLoading: false,
     error: false,
-    petProfileAktif: []
+    petProfileAktif: [],
+    petEditSubmit: false,
+    getAllPetMeLoading: false,
+    editPetLoading: false
 }
 
 const pets = (state = initialState, action) => {
@@ -14,18 +17,18 @@ const pets = (state = initialState, action) => {
         case 'GET_ALL_PET_ME_PENDING':
             return {
                 ...state,
-                isLoading: true
+                getAllPetMeLoading: true
             }
         case 'GET_ALL_PET_ME_FULFILLED':
             return {
                 ...state,
-                isLoading: false,
+                getAllPetMeLoading: false,
                 petsMe: action.payload.data
             }
         case 'GET_ALL_PET_ME_REJECTED':
             return {
                 ...state,
-                isLoading: false,
+                getAllPetMeLoading: false,
                 error: true,
                 petsMe: []
             }
@@ -38,7 +41,6 @@ const pets = (state = initialState, action) => {
                 matchs: []
             }
         case 'GET_PETS_MATCH_FULFILLED':
-            console.log('PAT MATCH',action.payload.data)
             return {
                 ...state,
                 isLoading: false,
@@ -50,6 +52,29 @@ const pets = (state = initialState, action) => {
                 isLoading: false,
                 error: true,
                 matchs: []
+            }
+
+        // EDIT PET
+        case 'POST_EDIT_PET_PENDING':
+            return {
+                ...state,
+                isLoading: true,
+                editPetLoading: true
+            }
+        case 'POST_EDIT_PET_FULFILLED':
+            return {
+                ...state,
+                isLoading: false,
+                petEditSubmit: true,
+                editPetLoading: false,
+                petProfileAktif: action.payload.data
+            }
+        case 'POST_EDIT_PET_REJECTED':
+            return {
+                ...state,
+                isLoading: false,
+                error: true,
+                editPetLoading: false
             }
 
         

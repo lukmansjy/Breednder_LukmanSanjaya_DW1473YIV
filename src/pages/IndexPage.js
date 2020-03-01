@@ -5,11 +5,13 @@ import CardSugest from '../components/CardSugest'
 import { connect } from 'react-redux'
 
 import {getAllPetsMe} from '../_actions/petsA'
+import {getAllSpecies} from '../_actions/speciesA'
 
 class IndexPage extends Component{
 
     componentDidMount(){
         this.props.getAllPetsMe()
+        this.props.getAllSpecies()
     }
 
     render(){
@@ -37,7 +39,8 @@ const mapStateToProps = (state) =>{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getAllPetsMe: ()=> dispatch( getAllPetsMe() )
+        getAllPetsMe: ()=> dispatch( getAllPetsMe() ),
+        getAllSpecies: ()=> dispatch( getAllSpecies() )
     }
 }
 
